@@ -5,7 +5,9 @@
 * djangorestframework 3.12.2
 
 ## Requirements
-1. Use with **cshimegi/lucky-draw-gui**
+1. [Virtualbox 6.1.16](https://www.virtualbox.org/wiki/Downloads)
+2. [Vagrant 2.2.14](https://www.vagrantup.com/downloads)
+3. Use with **cshimegi/lucky-draw-gui**
 
 ## Installation from scratch
 ##### Notification
@@ -17,29 +19,36 @@ If you want to install from scratch, please refer to branch **master**.
 
 * Step 2
 ```bash
-$ cd /to/git/clone/directory  // Please note that it\'s not project root including manage.py file
-$ python -m venv <venv name>  // ---> create a virtualenv
-$ <venv name>\\Scripts\\activate
-$(<venv name>) cd /to/django/project/root
-$(<venv name>) pip install -r requirements.txt  // ---> install all required packages
+$  cd /to/Vagrantfile/path
+$  vagrant up --provision
 ```
 
 * Step 3
 ```bash
-$(<venv name>) python manage.py makemigrations
-$(<venv name>) python manage.py migrate
-$(<venv name>) python manage.py runserver 0.0.0.0:8080
+$  vagrant ssh
+$  source /env38/bin/activate
+$  sudo pip3 install -r /vagrant/requirements.txt
+$  sudo python3 /vagrant/manage.py makemigrations
+$  sudo python3 /vagrant/manage.py migrate
+$  sudo python3 /vagrant/manage.py runserver 0.0.0.0:8080
 ```
 
 ## Access to Django WEB
 After dev django server is ready, you can access API page from browser.
 
-`http://localhost:8080/api/v1`
+`http://192.168.12.2:8080/api/v1`
 
 ## Useful Commands
-
-### Python virtualenv
+### Vagrant
 ```bash
-$ <venv name>\\Scripts\\activate  // ---> login venv
-$(<venv name>) deactivate  //---> logout venv
+$  vagrant up  //  to strat
+$  vagrant up --provision //  to strat and provision
+$  vagrant ssh  //  connect by SSH
+$  vagrant halt // to halt
+```
+
+### Ubuntu (bento/ubuntu-20.10)
+```bash
+$  source /env38/bin/activate // activate virtual python3 env
+$ (env38) deactivate // deactivate virtual python3 env
 ```
