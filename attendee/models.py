@@ -11,8 +11,8 @@ class Attendee(models.Model):
     # properties
     MIN_NAME_LEN = 1
     MAX_NAME_LEN = 64
-    MAX_PHONE_LEN = 10
-    MIN_PHONE_LEN = 8
+    MAX_PHONE_LEN = 14
+    MIN_PHONE_LEN = 10
 
     name  = models.CharField(
         max_length = MAX_NAME_LEN,
